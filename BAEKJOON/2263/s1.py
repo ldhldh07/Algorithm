@@ -7,7 +7,7 @@ postorder = list(map(int, sys.stdin.readline().strip().split()))
 
 node_index = [0] * (n + 1)
 
-for i in range(n):                     # inorder에서 각 값의 인덱스 저장
+for i in range(n):                    # inorder에서 각 값의 인덱스 저장
     node_index[inorder[i]] = i
 
 
