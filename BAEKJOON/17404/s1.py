@@ -11,7 +11,6 @@ for first_color in range(3):
             dp[first_color][dp_color][0] = [first_R, first_G, first_B][dp_color] 
 
 for i in range(1, N):
-
     R, G, B =  map(int, input().split())
     for first_color in range(3):
         for dp_color in range(3):
