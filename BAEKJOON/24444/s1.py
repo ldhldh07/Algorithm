@@ -1,6 +1,6 @@
 from collections import deque
 
-def dfs(sp):
+def bfs(sp):
     global cnt
     route.append(sp)
     visited[sp] = 1
@@ -33,7 +33,7 @@ for _ in range(M):
 for i in range(1, N + 1):
     adjList[i].sort()
 
-dfs(R)
+bfs(R)
 
 print(*order[1:], sep=('\n'))
 
