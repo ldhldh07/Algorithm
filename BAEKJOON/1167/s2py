@@ -1,0 +1,41 @@
+from collections import deque
+import sys
+sys.setrecursionlimit(10**6)
+
+def bfs(start_node, v):
+    visited = [-1] * (v+1)
+    visited[start_node] = 0
+    queue = deque([start_node])
+
+    while queue:
+        # 다음으로 이동하는 node
+        node = queue.popleft()
+        # 시작점에서 visited의 index값에 해당되는 노드들과의 거리
+        # print('node', node)
+        for next_node, distance in adjList[node]:
+            # 방문한 적이 없다면
+            if visited[next_node] == -1:
+                visited[next_node] = visited[node] + distance
+                queue.append(next_node)
+    # print(visited)
+    return max(visited)
+
+
+
+V = int(input())
+
+adjList = [[] for _ in range(V+1)]
+for _ in range(V):
+    arr = list(map(int, input().split()))
+    for i in range(1, len(arr)-1, 2):
+        adjList[arr[0]].append([arr[i], arr[i+1]])
+
+print(adjList)
+# bfs(1, V)
+# max_ans = 0
+# for i in range(1, V+1):
+#     node_max_dist = bfs(i, V)
+#     if node_max_dist > max_ans:
+#         max_ans = node_max_dist
+
+# print(max_ans)
