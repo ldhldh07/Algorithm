@@ -13,11 +13,6 @@ for first_color in range(3):
 for i in range(1, N):
     R, G, B =  map(int, input().split())
     for first_color in range(3):
-        for dp_color in range(3):
-            # 첫번째 dp에 따라 2번째 dp에는 처음에 들어간 색깔이 안들어가게 설정
-            if first_color == dp_color and i == 1:
-                dp[first_color][dp_color][i] = 1001
-                continue
         dp[first_color][0][i] = min(dp[first_color][1][i-1], dp[first_color][2][i-1]) + R
         dp[first_color][1][i] = min(dp[first_color][0][i-1], dp[first_color][2][i-1]) + G
         dp[first_color][2][i] = min(dp[first_color][0][i-1], dp[first_color][1][i-1]) + B
