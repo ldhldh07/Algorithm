@@ -6,18 +6,11 @@ def dijkstra(n, start, adjList):
     priority_queue = [(0, start)]
     
     while priority_queue:
-        # print('빼기전', priority_queue)
         distance, node = heapq.heappop(priority_queue)
-        # print('큐에서 뺀거', distance, node)
-        # print('뺀 후', priority_queue)
-
-        # print('distance_list[node]', distance_list[node])
-        # print('distance', distance)
         if distance_list[node] < distance:
             continue
 
         for next_distance, next_node in adjList[node]:
-            print('next_node, cost',next_node, next_distance)
             new_distance = distance + next_distance
             if new_distance < distance_list[next_node]:
                 distance_list[next_node] = new_distance
