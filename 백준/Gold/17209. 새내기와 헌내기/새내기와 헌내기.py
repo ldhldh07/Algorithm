@@ -1,33 +1,30 @@
 from collections import deque
-import sys
-sys.setrecursionlimit(10**6)
-    
-def dfs(cur, old):
-    if visited[cur]: 
-        return
-    visited[cur] = True
-    for i in adj[cur]:
-        if visited[i]: 
-            continue
-        people[int(not old)] += 1
-        dfs(i, not old)
 
 N = int(input())
-adj = [[] for _ in range(N)]
-visited = [False for _ in range(N)]
-res = 0
+arr = [list(map(int, list(input()))) for _ in range(N)]
+is_visited = [-1 for _ in range(N+1)]
+adj = [[] for _ in range(N+1)]
+ans = 0
 
 for i in range(N):
-    report = list(map(int, list(input())))
     for j in range(N):
-        if report[j] == 1:
-            adj[i].append(j)
-            adj[j].append(i)
+        if arr[i][j] == 1:
+            adj[i+1].append(j+1)
+            adj[j+1].append(i+1)
 
-for i in range(N):
-    if not visited[i]:
-        people = [0, 0]
-        dfs(i, True)
-        res += max(people[0], people[1] + 1)
+for checked_student in range(1, N+1):
+    group_count = [0, 0]
+    if is_visited[checked_student] == -1:
+        is_visited[checked_student] = 0
+        group_count[0] += 1
+        queue = deque([checked_student])
+        while queue:
+            current_student = queue.popleft()
+            for next_student in adj[current_student]:
+                if is_visited[next_student] == -1:
+                    is_visited[next_student] = 1 - is_visited[current_student]
+                    group_count[is_visited[next_student]] += 1
+                    queue.append(next_student)
 
-print(res)
+        ans += max(group_count)
+print(ans)
