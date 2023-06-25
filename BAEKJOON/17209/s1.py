@@ -5,8 +5,8 @@ arr = [list(map(int, list(input()))) for _ in range(N)]
 is_visited = [-1 for _ in range(N+1)]
 ans = 0
 for checked_student in range(1, N+1):
+    group_count = [0, 0]
     if is_visited[checked_student] == -1:
-        group_count = [0, 0]
         is_visited[checked_student] = 0
         group_count[0] += 1
         queue = deque([checked_student])
@@ -18,5 +18,5 @@ for checked_student in range(1, N+1):
                     group_count[is_visited[next_student+1]] += 1
                     queue.append(next_student + 1)
 
-        ans += min(group_count)
-print(N - ans)
+        ans += max(group_count)
+print(ans)
