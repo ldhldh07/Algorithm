@@ -24,6 +24,6 @@ check_weights = list(map(int, input().split()))
 
 ans_list = []
 for check_weight in check_weights:
-    ans_list.append('Y' if dp[check_weight] else 'N')
+    ans_list.append('Y' if check_weight <= max_weight and dp[check_weight] else 'N')
 
 print(*ans_list)
