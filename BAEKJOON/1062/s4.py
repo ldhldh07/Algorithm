@@ -14,7 +14,7 @@ def dfs(index, cnt, k):
                 if not learn[ord(char) - ord('a')]:
                     break
             else:
-                max_reading_word += 1
+                reading_word += 1
         max_reading_word = max(max_reading_word, reading_word)
         return
     for next_index in range(index, 26):

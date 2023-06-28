@@ -1,17 +1,18 @@
 import sys
 
-# 기본적으로 필요한 5개 문자를 제외한 나머지 알파벳
 alphabets = ['b', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r', 's', 'u', 'v', 'w', 'x', 'y', 'z']
 
 N, K = map(int, input().split())
 
-# 알파벳 체크
 learn = [0]*26
 for c in 'antic':
     learn[ord(c) - ord('a')] = 1
 
 # 백트래킹 함수
 def dfs(index, cnt):
+    global answer
+    if K-5-cnt+index < answer:
+        return
     if cnt == K-5:
         read_cnt = 0
         for word in words:
@@ -20,7 +21,8 @@ def dfs(index, cnt):
                     break
             else:
                 read_cnt += 1
-        return max(answer, read_cnt) if answer else read_cnt
+        answer = max(answer, read_cnt) if answer else read_cnt
+        return
     for i in range(index, 26):
         if not learn[i]:
             learn[i] = 1
@@ -42,4 +44,5 @@ if K < 5:
 elif K == 26:
     print(N)
 else:
-    print(dfs(0, 0))
+    dfs(0, 0)
+    print(answer)
