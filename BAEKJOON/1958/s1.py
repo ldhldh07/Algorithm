@@ -8,6 +8,6 @@ for i in range(1, 1+first_word_length):
             if first_word[i-1] == second_word[j-1] == third_word[w-1]:
                 dp[i][j][w] = dp[i-1][j-1][w-1] + 1
             else:
-                dp[i][j][w] = max(dp[i-1][j][w], dp[i][j-1][w], dp[i][j][w])
+                dp[i][j][w] = max(dp[i-1][j][w], dp[i][j-1][w], dp[i][j][w-1])
 
 print(dp[i][j][w])
