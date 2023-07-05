@@ -22,7 +22,7 @@ for state in range(1 << 10):
             turn_switch(0, j, temp_map)
             cnt += 1
 
-    for i in range(1, 9):
+    for i in range(9):
         for j in range(10):
             if temp_map[i] & (1 << j):
                 turn_switch(i+1, j, temp_map)
