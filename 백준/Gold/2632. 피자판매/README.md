@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 188612 KB, 시간: 1572 ms
+메모리: 218340 KB, 시간: 492 ms
 
 ### 분류
 
@@ -14,13 +14,13 @@
 
 <p>고객이 두 종류의 피자 A와 B를 취급하는 피자가게에서 피자를 주문하고자 한다. <그림 1>과 같이 각 종류의 피자는 다양한 크기의 여러 개의 피자조각으로 나누어져 있다. 각 조각에 쓰여진 숫자는 피자조각의 크기를 나타낸다.</p>
 
-<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/716aac2f-1375-4484-bf48-023e0fd3d665/-/preview/" style="width: 253px; height: 149px;"></p>
+<p style="text-align: center;"><img alt="" src="" style="width: 253px; height: 149px;"></p>
 
 <p style="text-align: center;"><그림 1></p>
 
 <p>고객이 원하는 피자의 크기를 이야기하면, 피자가게에서는 한 종류의 피자를 2 조각 이상 판매할 때는 반드시 연속된 조각들을 잘라서 판매한다. 이때 판매한 피자조각의 크기 합이 주문한 크기가 되어야 한다. 판매한 피자조각은 모두 A종류이거나, 모두 B종류이거나, 또는 A와 B 종류가 혼합될 수 있다. 예를 들어서, <그림 1> 과 같이 잘라진 피자가 있을 때, 손님이 전체 크기가 7 인 피자를 주문하면, 피자 가게에서는 <그림2>와 같이 5 가지 방법으로 피자를 판매할 수 있다.</p>
 
-<p style="text-align: center;"><img alt="" src="https://upload.acmicpc.net/11e274ec-7970-42ad-9ffa-6d926b261f19/-/preview/" style="width: 259px; height: 472px;"></p>
+<p style="text-align: center;"><img alt="" src="" style="width: 259px; height: 472px;"></p>
 
 <p style="text-align: center;"><그림 2></p>
 
