@@ -18,13 +18,11 @@ class FenwickTree:
 G, P = int(input()), int(input())
 
 fenwick_tree = FenwickTree(G)
-flag = True
 for i in range(1, P+1):
     g = int(input())
-    if flag:
-        fenwick_tree.update(g, 1)
-        if fenwick_tree.sum(g) > g:
-            ans = i-1
-            flag = False
+    fenwick_tree.update(g, 1)
+    if fenwick_tree.sum(g) > g:
+        ans = i-1
+        break
 
 print(ans)
