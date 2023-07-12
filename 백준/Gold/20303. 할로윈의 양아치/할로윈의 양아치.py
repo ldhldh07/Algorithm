@@ -37,14 +37,9 @@ for i in range(N):
     root_dict[root_i][0] += 1
     root_dict[root_i][1] += candy_list[i]
 
-
-max_K = min(N, 3000)
-candy_group = list(root_dict.values())
-length_candy_group = len(root_dict)
-
 dp = [0 for _ in range(K)]
-for i in range(length_candy_group):
-    child, candy = candy_group[i]
+
+for child, candy in root_dict.values():
     for j in range(K-1, child-1, -1):
         dp[j] = max(dp[j], dp[j-child] + candy)
 
