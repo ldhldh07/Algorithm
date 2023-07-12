@@ -36,13 +36,11 @@ for i in range(N):
     root_i = disjoint_set.find(i)
     root_dict[root_i][0] += 1
     root_dict[root_i][1] += candy_list[i]
-    
+
 dp = [0 for _ in range(K)]
+
 for child, candy in root_dict.values():
     for j in range(K-1, child-1, -1):
         dp[j] = max(dp[j], dp[j-child] + candy)
 
 print(dp[K-1])
-
-
-
