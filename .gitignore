@@ -1,0 +1,14 @@
+# IntelliJ IDEA files
+.idea/
+*.iml
+/out/
+
+# Compiled files
+*.class
+
+# Logs
+*.log
+
+# IDE-specific directories
+.settings/
+.vscode/
