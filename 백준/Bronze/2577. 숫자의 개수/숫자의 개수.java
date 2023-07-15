@@ -15,16 +15,14 @@ public class Main {
         for(int i = 0; i < 3; i++) {
             result = result * Integer.parseInt(br.readLine());
         }
-        List<Integer> immutableList = Collections.nCopies(10, 0);
-        List<Integer> NumberList = new ArrayList<>(immutableList);
-        String StringResult = String.valueOf(result);
-        for(char ch: StringResult.toCharArray()) {
-            int index = Character.getNumericValue(ch);
-            int currentCount = NumberList.get(index);
-            NumberList.set(index, currentCount + 1);
+        String stringResult = String.valueOf(result);
+        int[] countList = new int[10];
+        for (int i = 0; i < stringResult.length(); i++) {
+            countList[stringResult.charAt(i) - '0']++;
         }
-        for (int count : NumberList) {
-            bw.write(count + "\n");
+        for (int count : countList) {
+            bw.write(String.valueOf(count));
+            bw.newLine();
         }
         bw.flush();
         bw.close();
