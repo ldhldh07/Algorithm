@@ -1,20 +1,10 @@
 import java.io.*;
 import java.util.*;
 
-class Node {
-    int x;
-    int y;
-
-    Node(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
 
         String[] inputs = br.readLine().split(" ");
         int N = Integer.parseInt(inputs[0]);
@@ -37,8 +27,12 @@ public class Main {
             Collections.sort(list);
         }
 
-        List<Integer> dfsResult = dfs(V, N, adjList);
-        List<Integer> bfsResult = bfs(V, N, adjList);
+        boolean[] visited = new boolean[N+1];
+        List<Integer> dfsResult = new ArrayList<>();
+        dfs(V, visited, dfsResult, adjList);
+
+        visited = new boolean[N+1];
+        List<Integer> bfsResult = bfs(V, N, adjList, visited);
 
         for (int dfsRes : dfsResult) {
             bw.write(String.valueOf(dfsRes) + " ");
@@ -53,9 +47,19 @@ public class Main {
 
     }
 
-    public static List<Integer> bfs(int start, int nodeSize, List<List<Integer>> adjList) {
+    public static void dfs(int current, boolean[] visited, List<Integer> result, List<List<Integer>> adjList) {
+        visited[current] = true;
+        result.add(current);
+
+        for (int next : adjList.get(current)) {
+            if (!visited[next]) {
+                dfs(next, visited, result, adjList);
+            }
+        }
+    }
+
+    public static List<Integer> bfs(int start, int nodeSize, List<List<Integer>> adjList, boolean[] visited) {
         Queue<Integer> queue = new LinkedList<>();
-        boolean[] visited = new boolean[nodeSize + 1];
         List<Integer> result = new ArrayList<>();
 
         queue.add(start);
@@ -73,31 +77,6 @@ public class Main {
             }
         }
 
-        return result;
-    }
-
-    public static List<Integer> dfs(int start, int nodeSize, List<List<Integer>> adjList) {
-        Stack<Integer> stack = new Stack<>();
-        boolean[] visited = new boolean[nodeSize +1];
-        List<Integer> result = new ArrayList<>();
-
-        stack.push(start);
-
-        while(!stack.isEmpty()) {
-            int currentNode = stack.pop();
-
-            if (!visited[currentNode]) {
-                visited[currentNode] = true;
-                result.add(currentNode);
-
-                for (int i = adjList.get(currentNode).size() - 1; i >= 0; i--) {
-                    int nextNode = adjList.get(currentNode).get(i);
-                    if (!visited[nextNode]) {
-                        stack.push(nextNode);
-                    }
-                }
-            }
-        }
         return result;
     }
 }
