@@ -1,15 +1,11 @@
-
 def T_to_S(s, t, len_s, len_t):
     if len_s == len_t:
-        return 1 if s == t else 0
-
-    result = 0
-    if t[-1] == 'A':
-        result = T_to_S(s, t[:-1], len_s, len_t-1)
-    if t[0] == 'B':
-        result = result or T_to_S(s, t[::-1][:-1], len_s, len_t-1)
-        
-    return result
+        return s == t
+    if t[-1] == 'A' and T_to_S(s, t[:-1], len_s, len_t-1):
+        return 1
+    if t[0] == 'B' and T_to_S(s, t[:0:-1], len_s, len_t-1):
+        return 1
+    return 0
 
 S, T = input(), input()
 len_S, len_T = len(S), len(T)
