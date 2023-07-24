@@ -12,7 +12,7 @@ for _ in range(T):
     char_dict = defaultdict(list)
     char_count = defaultdict(int)
     max_diff = -1
-    min_diff = float('inf')
+    min_diff = length_word
 
     for index in range(length_word):
         char = W[index]
