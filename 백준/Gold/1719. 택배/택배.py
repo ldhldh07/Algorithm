@@ -30,4 +30,5 @@ for _ in range(m):
     adjs[start-1].append((time, end-1))
     adjs[end-1].append((time, start-1))
 
-[print(*dijkstra(start, n, adjs)) for start in range(n)]
+for start_point in range(n):
+    print(*dijkstra(start_point, n, adjs))
