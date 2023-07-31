@@ -2,18 +2,15 @@ from collections import defaultdict
 
 def possible_half(coin_dict, target):
     available_moneys = set([0])
-
-    for coin, coin_count in sorted(coin_dict.items(), reverse=True):
-        new_moneys = set()
-        for available_money in available_moneys:
-            for i in range(1, coin_count + 1):
+    for coin, coin_count in coin_dict.items():
+        temp = available_moneys.copy()
+        for available_money in temp:
+            for i in range(1, coin_count+1):
                 next_available_money = available_money + coin * i
-                if next_available_money > target:
-                    break
-                new_moneys.add(next_available_money)
                 if next_available_money == target:
                     return 1
-        available_moneys.update(new_moneys)
+                if next_available_money <= target:
+                    available_moneys.add(next_available_money)
     return 0
 
 ans_list = []
