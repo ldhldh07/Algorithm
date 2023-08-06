@@ -2,7 +2,7 @@ from collections import deque
 
 def topology_sort(n, adj_list, indegree, durations):
     queue = deque()
-    times = [float('inf') for _ in range(n)]
+    times = [0 for _ in range(n)]
 
     for i in range(n):
         if indegree[i] == 0:
@@ -11,15 +11,14 @@ def topology_sort(n, adj_list, indegree, durations):
 
     while queue:
         node = queue.popleft()
-        
+
         for next_node in adj_list[node]:
             indegree[next_node] -= 1
-            new_duration = times[node] + durations[next_node] 
-            if new_duration < times[next_node]:
-                times[next_node] = new_duration
+            times[next_node] = max(times[next_node], times[node] + durations[next_node])
 
             if not indegree[next_node]:
                 queue.append(next_node)
+                
     return times
 
 
@@ -34,6 +33,5 @@ for i in range(N):
         adj_list[prev-1].append(i)
         indegree[i] += 1
     durations[i] = time
-
 
 print(*topology_sort(N, adj_list, indegree, durations), sep='\n')
