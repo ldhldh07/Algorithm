@@ -1,3 +1,4 @@
+import sys
 from collections import defaultdict
 
 def check_fruit(f, x1, y1, x2, y2):
@@ -18,13 +19,15 @@ def find_largest_square(N, fruit_set):
                     return length**2
     return 0
 
-N, M = map(int, input().split())
+
+si = sys.stdin.readline
+N, M = map(int, si().strip().split())
 
 farm = [[0 for _ in range(N)] for _ in range(N)]
 fruit_set = set()
 
 for _ in range(M):
-    X, Y, L, F = map(int, input().split())
+    X, Y, L, F = map(int, si().strip().split())
     for x in range(L):
         for y in range(L):
             farm[X+x][Y+y] = F
