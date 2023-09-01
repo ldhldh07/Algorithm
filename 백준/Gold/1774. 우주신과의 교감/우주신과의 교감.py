@@ -28,7 +28,7 @@ class DisjointSet:
                 self.rank[root_x] += 1
 
 
-def kruskal(adjs, disjoint_set):
+def kruskal(adjs, disjoint_set, count, n):
     adjs.sort(key = lambda adj: adj[2])
     sum_distance = 0
 
@@ -37,6 +37,10 @@ def kruskal(adjs, disjoint_set):
             continue
         disjoint_set.union(u, v)
         sum_distance += distance
+        count += 1
+
+        if count == n-1:
+            break
 
     return sum_distance
 
@@ -59,11 +63,13 @@ for current_i in range(N):
     gods.append((X, Y))
 
 disjoint_set = DisjointSet(N)
-
+count = 0
 for _ in range(M):
     a, b = map(int, si().strip().split())
-    disjoint_set.union(a-1, b-1)
+    if disjoint_set.find(a-1) != disjoint_set.find(b-1):
+        disjoint_set.union(a-1, b-1)
+        count += 1
 
-answer = kruskal(adjs, disjoint_set)
+answer = kruskal(adjs, disjoint_set, count, N)
 
 print("{:.2f}".format(answer))
