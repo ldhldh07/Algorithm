@@ -23,9 +23,7 @@ def bfs(start_point, array, r, c, rains):
 
         for _ in range(len(queue)):
             current_node = queue.popleft()
-            if array[current_node.x][current_node.y] == 'H':
-                return current_node.distance
-            
+          
             for delta_i, delta_j in delta:
                 next_x, next_y = current_node.x + delta_i, current_node.y + delta_j
                 if 0 <= next_x < r and 0 <= next_y < c and not visited[next_x][next_y]:
